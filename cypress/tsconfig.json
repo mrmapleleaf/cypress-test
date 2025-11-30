@@ -1,0 +1,18 @@
+// cypress/tsconfig.json
+{
+  // ルートにある親の tsconfig.json を継承
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    // ここで Cypress の型を有効化
+    "types": ["cypress", "node"],
+    // 好みで strict など
+    "isolatedModules": false
+  },
+  "include": [
+    "../node_modules/cypress",
+    "./**/*.ts",
+    "./**/*.tsx",
+    "./**/*.cy.ts",
+    "./**/*.cy.tsx"
+  ]
+}
