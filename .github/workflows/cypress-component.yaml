@@ -15,29 +15,29 @@ jobs:
     runs-on: ubuntu-24.04
 
   steps:
-      # リポジトリのコードを実行環境にクローンする
-      # 基本的にどのワークフローでも一番最初で行う
-      - name: Checkout
-        uses: actions/checkout@v4
+    # リポジトリのコードを実行環境にクローンする
+    # 基本的にどのワークフローでも一番最初で行う
+    - name: Checkout
+      uses: actions/checkout@v4
 
-        # node.jsのセットアップ
-        # 実行環境にnode.jsをインストールする
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
+      # node.jsのセットアップ
+      # 実行環境にnode.jsをインストールする
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'npm'
 
-      # npm ciで依存関係をインストール
-      # ローカルと同じ内容をインストールさせるためにpackage-lock.jsonを参照する
-      - name: Install Dependencies
-        run: npm ci
+     # npm ciで依存関係をインストール
+    # ローカルと同じ内容をインストールさせるためにpackage-lock.jsonを参照する
+    - name: Install Dependencies
+      run: npm ci
 
-      # cypressのテストを実行
-      # Cypress 公式の GitHub Actionを使用
-      - name: Run cypress test
-        uses: cypress-io/github-action@v6
-        with: 
-          # componentテストを実行する設定
-          # cypress run --component と同じ
-          component: true
+    # cypressのテストを実行
+    # Cypress 公式の GitHub Actionを使用
+    - name: Run cypress test
+      uses: cypress-io/github-action@v6
+      with: 
+        # componentテストを実行する設定
+        # cypress run --component と同じ
+        component: true
